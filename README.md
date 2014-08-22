@@ -24,20 +24,20 @@ $ ./keygen
 Usage: keygen number number
 $ ./keygen 61 53
 n: 3233
-e: 3119
-d: 6239
+e: 257
+d: 5633
 $ ./rsa
 Usage: rsa number number
-$ ./rsa 3119 3233 > ciphertext
+$ ./rsa 257 3233 > ciphertext
 Hello World!
-$ ./rsa 6239 3233 < ciphertext
+$ ./rsa 5633 3233 < ciphertext
 Hello World!
 $ rm ciphertext
 ```
 
 The keygen binary is used to generate the private/public key pairs. It takes two prime numbers (`p` and `q`) as arguments and returns three numbers (`n`, `e` and `d`) as results. The two key pairs are `e`-`n` and `d`-`n` where `n` is the modulus and `e` and `d` are the exponents.
 
-The rsa binary is used to encrypt and decrypt messages using a given key pair. It takes two arguments: the exponent and the modulus which together form a key pair. Note that the value of modulus must not exceed `fromEnum (maxBound :: Char)`. On my system this is `1114111`. It's also recommended that the modulus be more than `255`.
+The rsa binary is used to encrypt and decrypt messages using a given key pair. It takes two arguments: the exponent and the modulus which together form a key pair. Note that the value of the modulus must not exceed `fromEnum (maxBound :: Char)`. On my system this is `1114111`. It's also recommended that the modulus be more than `255`.
 
 ## License ##
 

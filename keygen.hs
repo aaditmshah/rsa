@@ -32,7 +32,7 @@ keygen p q
     | isPrime p && isPrime q && p /= q = do
         let n   = p * q
             phi = n - p - q + 1
-            e   = head $ filter ((== 1) . gcd phi) [phi-1,phi-2..2]
+            e   = head . filter ((== 1) . gcd phi) $ dropWhile (> phi) [65537,257,17,5,3]
             d   = (`div` e) . head . filter ((== 0) . (`mod` e)) $ map ((+1) . (* phi)) [e+1..]
         putStrLn $ "n: " ++ show n
         putStrLn $ "e: " ++ show e
